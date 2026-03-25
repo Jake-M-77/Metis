@@ -28,7 +28,7 @@ Goal: Establish core system structure
 - [x] Docs structure
 - [x] Git repository initialisation (if not done)
 - [x] Backend service scaffolding
-- [ ] Prisma setup + database connection
+- [x] Prisma setup + database connection
 
 ---
 
