@@ -26,8 +26,8 @@ Goal: Establish core system structure
 - [x] Docker infrastructure (PostgreSQL)
 - [x] Frontend React app setup
 - [x] Docs structure
-- [ ] Git repository initialisation (if not done)
-- [ ] Backend service scaffolding
+- [x] Git repository initialisation (if not done)
+- [x] Backend service scaffolding
 - [ ] Prisma setup + database connection
 
 ---
