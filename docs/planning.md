@@ -35,9 +35,9 @@ Goal: Establish core system structure
 ### 🟡 Phase 2 — MVP Backend Core
 Goal: Build minimal working backend
 
-- [ ] Create person-service
-- [ ] Define initial Prisma schema
-- [ ] Implement basic CRUD for persons
+- [x] Create person-service
+- [x] Define initial Prisma schema
+- [x] Implement basic CRUD for persons
 - [ ] Connect frontend to API
 - [ ] Basic search endpoint (simple query)
 
