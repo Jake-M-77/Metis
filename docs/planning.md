@@ -56,11 +56,11 @@ Goal: Ensure backend reliability before frontend integration
 ### 🔵 Phase 3 — MVP Frontend
 Goal: Functional UI for person search system
 
-- [ ] Search page UI
-- [ ] Person results view
+- [x] Search page UI
+- [x] Person results view
 - [ ] Person detail page
-- [ ] Routing setup (React Router)
-- [ ] API integration layer
+- [x] Routing setup (React Router)
+- [x] API integration layer
 
 ---
 
