@@ -26,7 +26,7 @@ export const getPersonByIdService = async (id: string) => {
 };
 
 export const updatePersonService = async (
-    id: string, 
+    id: string,
     data: Partial<{
         firstName: string;
         lastName: string;
@@ -37,12 +37,25 @@ export const updatePersonService = async (
         where: { id },
         data: {
             ...data,
-            ...(data.birthDate && { birthDate : new Date(data.birthDate)}),
+            ...(data.birthDate && { birthDate: new Date(data.birthDate) }),
         },
     });
 };
 
 export const deletePersonService = async (id: string) => {
-    return prisma.person.delete({ where: { id },
+    return prisma.person.delete({
+        where: { id },
+    });
+};
+
+export const getPersonByFirstNameService = async (firstName: string) => {
+
+    return await prisma.person.findMany({
+        where: {
+            firstName: {
+                contains: firstName,
+                mode: "insensitive",
+            },
+        },
     });
 };

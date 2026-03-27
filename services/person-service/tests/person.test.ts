@@ -7,6 +7,7 @@ import { resolve } from "node:dns";
 
 describe("Person Service Endpoints", () => {
   let personId: string;
+  let personFirstName: string;
 
   afterAll(async () => {
     await prisma.$disconnect();
@@ -27,6 +28,7 @@ describe("Person Service Endpoints", () => {
 
 
     personId = res.body.id;
+    personFirstName = res.body.firstName;
   });
 
   it("should return all persons", async () => {
@@ -58,6 +60,18 @@ describe("Person Service Endpoints", () => {
     expect(res.body.firstName).toBe("Updated");
   });
 
+  // GET PERSONS BY FIRST NAME (FUZZY SEARCH)
+
+  it("should get a array back of persons matching the firstname (fuzzy search)", async () => {
+    const res = await request(app)
+    .get("/persons/search")
+    .send({
+      firstName: `${personFirstName}`
+    })
+
+    expect (res.statusCode).toBe(200);
+  });
+
   // DELETE
   it("should delete a person", async () => {
     const res = await request(app).delete(`/persons/${personId}`);
@@ -72,5 +86,7 @@ describe("Person Service Endpoints", () => {
     expect(res.statusCode).toBe(404);
   });
 
+
+  
 
 });

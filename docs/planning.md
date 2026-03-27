@@ -39,7 +39,7 @@ Goal: Build minimal working backend
 - [x] Define initial Prisma schema
 - [x] Implement basic CRUD for persons
 - [ ] Connect frontend to API
-- [ ] Basic search endpoint (simple query)
+- [x] Basic search endpoint (simple query)
 
 ---
 

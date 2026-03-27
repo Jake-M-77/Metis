@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { getAllPersons, createPersonService, getPersonByIdService, updatePersonService, deletePersonService } from "../services/person.service.js";
+import { getAllPersons, createPersonService, getPersonByIdService, updatePersonService, deletePersonService, getPersonByFirstNameService } from "../services/person.service.js";
 
 // export const getPersons = async (reg: Request, res: Response) => {
 //     res.json({ message: "Controller is working" })
@@ -20,7 +20,7 @@ export const getPersonById = async (req: Request, res: Response) => {
     const person = await getPersonByIdService(req.params.id as string);
 
     if (!person) {
-        return res.status(404).json( { message: "Person not found" })
+        return res.status(404).json( { message: "Person not found (ID)" })
     }
 
     res.json(person)
@@ -34,4 +34,20 @@ export const updatePerson = async (req: Request, res: Response) => {
 export const deletePerson = async (req: Request, res: Response) => {
     await deletePersonService(req.params.id as string);
     res.status(204).send();
+};
+
+
+export const getPersonByFirstName = async (req: Request, res: Response) => {
+
+    const { firstName } = req.query;
+
+    console.log("Hit search endpoint")
+
+    const persons = await getPersonByFirstNameService(firstName as string);
+
+    if (persons.length === 0){
+        return res.status(404).json( { message: "Person(s) not found" })
+    }
+
+    res.json(persons);
 };
