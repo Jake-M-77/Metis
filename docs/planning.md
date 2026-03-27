@@ -38,8 +38,18 @@ Goal: Build minimal working backend
 - [x] Create person-service
 - [x] Define initial Prisma schema
 - [x] Implement basic CRUD for persons
-- [ ] Connect frontend to API
 - [x] Basic search endpoint (simple query)
+
+---
+
+### 🟠 Phase 2.5 — Backend Testing & Validation
+
+Goal: Ensure backend reliability before frontend integration
+
+- [x] Set up Postman collection for manual testing
+- [x] Implement automated tests (Jest + Supertest)
+- [ ] Add validation layer (Zod or similar)
+- [x] Improve error handling (consistent responses)
 
 ---
 
@@ -53,6 +63,17 @@ Goal: Functional UI for person search system
 - [ ] API integration layer
 
 ---
+
+### ⚪️ Phase 3.5 — Frontend ↔ Backend Integration
+
+Goal: Connect UI to live backend
+
+- [ ] Connect frontend to API
+- [ ] Display real data from backend
+- [ ] Handle loading & error states
+- [ ] Basic search functionality wired end-to-end
+
+ ---
 
 ### 🟣 Phase 4 — System Expansion (Post-MVP)
 Goal: Extend functionality
