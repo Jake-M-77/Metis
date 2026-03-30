@@ -73,35 +73,131 @@ Goal: Connect UI to live backend
 - [x] Handle loading & error states
 - [x] Basic search functionality wired end-to-end
 
- ---
+---
 
-### 🟣 Phase 4 — System Expansion (Post-MVP)
-Goal: Extend functionality
+### POST MVP ###
+
+## 🎨 🟣 Phase 4 — UI System & Frontend Experience (MVP+)
+
+Goal: Build the full visual and layout system for Metis using Tailwind CSS
+
+---
+
+### 🧱 Phase 4.1 — Core Layout System
+Goal: Define global application structure
+
+- [ ] Navbar styling (primary navigation)
+- [ ] App shell layout (header / sidebar / content structure)
+- [ ] Home page layout structure
+- [ ] Search page layout structure
+- [ ] Person page base layout (container + grid foundation)
+
+---
+
+### 🔍 Phase 4.2 — Search Experience UI
+Goal: Turn search into a polished UI system
+
+- [ ] Search input styling (focus states, spacing)
+- [ ] Results list layout (cards or rows)
+- [ ] Hover + active states for results
+- [ ] Loading skeleton styling
+- [ ] Empty state design (no results)
+
+---
+
+### 👤 Phase 4.3 — PersonRecord UI System
+Goal: Build scalable nested record layout
+
+- [ ] Main container layout (split panel system)
+- [ ] Left navigation (overview / custody / etc.)
+- [ ] Secondary navigation (sub-sections)
+- [ ] Content display panel layout
+- [ ] Nested layout structure support (future-proofing)
+
+---
+
+### 🎨 Phase 4.4 — Design System (Tailwind Usage Rules)
+Goal: Ensure UI consistency using Tailwind (NOT a new design system)
+
+- [ ] Spacing consistency rules (padding / margin patterns)
+- [ ] Typography scale (text hierarchy rules)
+- [ ] Colour usage conventions (primary / muted / danger / success)
+- [ ] Border + shadow usage patterns
+- [ ] Define reusable Tailwind patterns (utility combinations)
+
+---
+
+### 🧪 Phase 4.5 — Person Detail Page
+Goal: Complete full MVP+ user journey
+
+- [ ] Full person detail page layout
+- [ ] Structured data sections (overview, flags, history, etc.)
+- [ ] Navigation between subsections
+- [ ] Integration with PersonRecord layout system
+
+---
+
+### 🔒 Phase 4.6 — Validation & API Hardening
+Goal: Improve backend reliability and data safety
+
+- [ ] Add validation layer (Zod or similar)
+- [ ] Standardise request/response schemas
+- [ ] Improve backend error handling consistency
+- [ ] Ensure API contracts are stable for frontend
+
+---
+
+### 🧪 Phase 4.7 — Frontend Component Testing
+Goal: Ensure UI reliability as complexity grows
+
+- [ ] Unit tests for key components
+- [ ] React Testing Library setup
+- [ ] Component rendering tests
+- [ ] UI behaviour validation (props/state changes)
+
+---
+
+## 🧠 Phase 4 Principles
+
+- Build UI using Tailwind utility classes by default
+- Layout-first thinking (structure before styling detail)
+- Keep UI simple and predictable
+- Laptop-first design (no mobile focus yet)
+- No custom CSS unless absolutely necessary
+
+---
+
+## 🚫 Phase 4 Non-Goals
+
+- Do NOT introduce UI frameworks (MUI, Chakra, etc.)
+- Do NOT build full component libraries too early
+- Do NOT focus on mobile optimisation yet
+- Do NOT add complex animations
+- Do NOT over-engineer reusable UI abstractions
+
+---
+
+## 🟠 Phase 5 — System Expansion (Post-MVP+)
+
+Goal: Extend backend capabilities and domain features
 
 - [ ] Custody service
 - [ ] Investigation service
-- [ ] Descriptor system (tattoos/scars)
+- [ ] Descriptor system (tattoos / scars / marks)
 - [ ] Advanced search service
+- [ ] Event-driven architecture (future optional step)
 
 ---
 
-### 🔴 Phase 5 — Scaling & Architecture Evolution
-Goal: Prepare for microservices transition
+## 🔴 Phase 6 — Scaling & Architecture Evolution
 
-- [ ] Split database per service (future)
+Goal: Long-term system scalability and optimisation
+
+- [ ] Split database per service (future architecture step)
 - [ ] Introduce caching layer
-- [ ] Add event-driven architecture (optional)
 - [ ] Performance optimisation
-
----
-
-## 🧠 3. Development Principles
-
-- Build simple first, scale later
-- Do not over-engineer MVP features
-- Every feature must support the search-first goal
-- Maintain clean separation between services
-- Keep frontend thin, backend authoritative
+- [ ] Microservices transition planning
+- [ ] Infrastructure scaling considerations
 
 ---
 
