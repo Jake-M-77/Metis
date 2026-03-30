@@ -1,5 +1,4 @@
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
-import './App.css'
+import { Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 
 function App() {
@@ -9,6 +8,10 @@ function App() {
       
       <Navbar />
       <Outlet />
+
+      <div className="p-10 text-3xl font-bold text-blue-500">
+      Tailwind is working 🚀
+    </div>
 
 
     </>

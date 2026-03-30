@@ -68,10 +68,10 @@ Goal: Functional UI for person search system
 
 Goal: Connect UI to live backend
 
-- [ ] Connect frontend to API
-- [ ] Display real data from backend
-- [ ] Handle loading & error states
-- [ ] Basic search functionality wired end-to-end
+- [x] Connect frontend to API
+- [x] Display real data from backend
+- [x] Handle loading & error states
+- [x] Basic search functionality wired end-to-end
 
  ---
 

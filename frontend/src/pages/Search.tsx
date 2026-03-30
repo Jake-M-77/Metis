@@ -24,7 +24,7 @@ function Search(){
     <h1>Search Page</h1>
 
 
-    <p>{name}</p>
+    <p className="text-xl font-bold">{name}</p>
 
 
 
