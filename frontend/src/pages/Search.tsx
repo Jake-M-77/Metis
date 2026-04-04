@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import Personsearch from "../components/Personsearch/Personsearch";
 
 
 function Search(){
@@ -21,10 +22,12 @@ function Search(){
 
     return(<>
     
-    <h1>Search Page</h1>
+    <h1 className="text-text-primary text-2xl text-center pb-4 pt-4">Person Search Page</h1>
+
+    <Personsearch />
 
 
-    <p className="text-xl font-bold">{name}</p>
+    {/* <p className="text-xl font-bold">{name}</p>
 
 
 
@@ -48,7 +51,7 @@ function Search(){
         <div key={person.id}>
             <p>Firstname: {person.firstName} - Lastname:{person.lastName} - birthDate: {person.birthDate.split("T")[0]} - createdAt: {person.createdAt}</p>
         </div>
-    ))}
+    ))} */}
 
     </>)
 }

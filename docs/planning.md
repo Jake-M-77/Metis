@@ -86,11 +86,11 @@ Goal: Build the full visual and layout system for Metis using Tailwind CSS
 ### 🧱 Phase 4.1 — Core Layout System
 Goal: Define global application structure
 
-- [ ] Navbar styling (primary navigation)
+- [x] Navbar styling (primary navigation)
 - [ ] App shell layout (header / sidebar / content structure)
-- [ ] Home page layout structure
-- [ ] Search page layout structure
-- [ ] Person page base layout (container + grid foundation)
+- [x] Home page layout structure
+- [x] Search page layout structure
+- [x] Person page base layout (container + grid foundation)
 
 ---
 

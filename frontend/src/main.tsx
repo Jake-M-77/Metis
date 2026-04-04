@@ -21,8 +21,8 @@ import Search from './pages/Search.tsx'
 
 
 import './styles/index.css'
-import './styles/reset.css'
 import './styles/App.css'
+import PersonPage from './pages/PersonPage.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
@@ -38,6 +38,10 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/person/:id" element={<Person />} />
+
+        {/* Once personpage has been wired up and styling complete, this will need to be removed */}
+
+        <Route path="/personpage" element={<PersonPage />} /> 
 
       
       </Route>

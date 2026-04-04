@@ -9,9 +9,6 @@ function App() {
       <Navbar />
       <Outlet />
 
-      <div className="p-10 text-3xl font-bold text-blue-500">
-      Tailwind is working 🚀
-    </div>
 
 
     </>
