@@ -4,6 +4,13 @@
 @tailwind utilities;
 
 
+@layer base {
+  html{
+    @apply font-sans;
+  }
+}
+
+
 :root {
 
     

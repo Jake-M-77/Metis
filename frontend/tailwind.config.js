@@ -5,6 +5,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Tahoma", "ui-sans-serif", "system-ui"],
+      },
       colors: {
 
         // BACKGROUNDS
