@@ -11,18 +11,18 @@ function PersonPage() {
 
         <div className="flex h-screen">
 
-            <aside className="w-64 border-r border-bg-surface">
+            <aside className="w-64 border-r border-border-default bg-elevated">
 
                 <nav className="flex flex-col gap-2">
-                    <button className="text-text-primary text-xl p-2 border-2 rounded-xl ">Overview</button>
-                    <button className="text-text-primary text-xl p-2 border-2 rounded-xl ">People</button>
-                    <button className="text-text-primary text-xl p-2 border-2 rounded-xl ">Locations</button>
-                    <button className="text-text-primary text-xl p-2 border-2 rounded-xl ">Comms</button>
-                    <button className="text-text-primary text-xl p-2 border-2 rounded-xl ">Vehicles</button>
-                    <button className="text-text-primary text-xl p-2 border-2 rounded-xl">Custody</button>
-                    <button className="text-text-primary text-xl p-2 border-2 rounded-xl">Intelligence</button>
-                    <button className="text-text-primary text-xl p-2 border-2 rounded-xl">Investigations</button>
-                    <button className="text-text-primary text-xl p-2 border-2 rounded-xl">Misper Info</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Overview</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">People</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Locations</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Comms</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Vehicles</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Custody</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Intelligence</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Investigations</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Misper Info</button>
 
                 </nav>
             </aside>

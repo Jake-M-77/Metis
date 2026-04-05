@@ -6,26 +6,40 @@
 
 :root {
 
-    --bg-base: #0B0F14;
-    --bg-surface: #111827;
-    --bg-elevated: #1A2230;
+    
+  /* BACKGROUNDS */
+  --bg-base: #3D3C3C;
+  --bg-surface: #474646;
+  --bg-elevated: #505050;
 
-    --text-primary: #E5E7EB;
-    --text-secondary: #A3AAB6;
-    --text-muted: #6B7280;
+  /* TEXT */
+  --text-primary: #E5E7EB;
+  --text-secondary: #A3AAB6;
+  --text-muted: #6B7280;
 
-    --border-subtle: #1F2937;
-    --border-default: #243041;
+  /* BORDERS */
+  --border-subtle: #5A5A5A;
+  --border-default: #6B6B6B;
 
-    --color-primary: #3B82F6;
-    --color-primary-hover: #2563EB;
-    --color-primary-active: #1D4ED8;
+  /* BUTTON SYSTEM */
+  --btn-default-bg: #505050;
+  --btn-default-hover: #5A5A5A;
+  --btn-default-active: #666666;
 
-    --status-success: #22C55E;
-    --status-warning: #F59E0B;
-    --status-danger: #EF4444;
-    --status-info: #06B6D4;
-    --status-neutral: #64748B;
+  --btn-ghost-hover: #474646;
+
+  /* PRIMARY (USE SPARINGLY) */
+  --color-primary: #4A4AFF;
+  --color-primary-hover: #3F3FFF;
+  --color-primary-active: #3535D6;
+
+  /* STATUS */
+  --status-success: #22C55E;
+  --status-warning: #F59E0B;
+  --status-danger: #EF4444;
+  --status-info: #06B6D4;
+  --status-neutral: #64748B;
+
 
 
 }
