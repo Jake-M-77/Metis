@@ -3,7 +3,7 @@
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 
 
@@ -31,6 +31,8 @@ import AliasDetails from './PersonOverviewPage/Components/AliasDetails.tsx'
 import CustodyPhotos from './PersonOverviewPage/Components/CustodyPhotos.tsx'
 import Documents from './PersonOverviewPage/Components/Documents.tsx'
 import Info from './PersonOverviewPage/Components/Info.tsx'
+import PersonOverviewPage from './PersonOverviewPage/PersonOverviewPage.tsx'
+import People from './pages/People.tsx'
 
 
 
@@ -50,27 +52,40 @@ createRoot(document.getElementById('root')!).render(
 
 
           <Route path='/personpage' element={<PersonPage />}>
+          {/* Navigates to overview/home when loading person */}
+            <Route index element={<Navigate to='/personpage/overview/home' replace />} />
+
+            {/* people page */}
+            <Route path='/personpage/people' element={<People />}>
+            
+            
+            </Route>
 
 
-            <Route path='/personpage/overview' element={<Overview />} />
-            <Route path='/personpage/warningmarkers' element={<WarningMarkers />} />
-            <Route path='/personpage/bailconditions' element={<BailConditions />} />
-            <Route path='/personpage/descriptions' element={<Description />} />
-            <Route path='/personpage/details' element={<AliasDetails />} />
-            <Route path='/personpage/custodyphotos' element={<CustodyPhotos />} />
-            <Route path='/personpage/Docs' element={<Documents />} />
-            <Route path='/personpage/info' element={<Info />} />
+
+            {/* Overview Page */}
+            <Route path='/personpage/overview' element={<PersonOverviewPage />}>
+
+              <Route path='/personpage/overview/home' element={<Overview />} />
+              <Route path='/personpage/overview/warningmarkers' element={<WarningMarkers />} />
+              <Route path='/personpage/overview/bailconditions' element={<BailConditions />} />
+              <Route path='/personpage/overview/descriptions' element={<Description />} />
+              <Route path='/personpage/overview/details' element={<AliasDetails />} />
+              <Route path='/personpage/overview/custodyphotos' element={<CustodyPhotos />} />
+              <Route path='/personpage/overview/Docs' element={<Documents />} />
+              <Route path='/personpage/overview/info' element={<Info />} />
+
+              {/* Default component */}
+              <Route index element={<Overview />} />
+
+
+            </Route>
+
+
+
+
 
            
-
-
-            {/* Overview, warning markers, bail conditions, etc */}
-
-
-            {/* Default component */}
-            <Route index element={<Overview />} />
-
-
 
           </Route>
 
@@ -88,5 +103,5 @@ createRoot(document.getElementById('root')!).render(
 
 
 
-  </StrictMode>,
+  </StrictMode >,
 )

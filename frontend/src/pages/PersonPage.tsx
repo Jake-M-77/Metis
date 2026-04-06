@@ -1,3 +1,4 @@
+import { NavLink, Outlet } from "react-router-dom";
 import PersonOverview from "../PersonOverviewPage/PersonOverviewPage";
 
 
@@ -14,8 +15,8 @@ function PersonPage() {
             <aside className="w-36 border-r border-border-default bg-elevated">
 
                 <nav className="flex flex-col gap-2">
-                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Overview</button>
-                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">People</button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active"><NavLink to='/personpage/overview/home'>Overview</NavLink></button>
+                    <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active"><NavLink to='/personpage/people'>People</NavLink></button>
                     <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Locations</button>
                     <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Comms</button>
                     <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Vehicles</button>
@@ -30,7 +31,7 @@ function PersonPage() {
 
             <main className="flex-1 flex flex-col">
 
-                <PersonOverview />
+            <Outlet />
 
 
             </main>
