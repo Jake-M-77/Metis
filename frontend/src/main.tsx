@@ -23,35 +23,53 @@ import Search from './pages/Search.tsx'
 import './styles/index.css'
 import './styles/App.css'
 import PersonPage from './pages/PersonPage.tsx'
+import Overview from './PersonPage/Components/Overview.tsx'
+import WarningMarkers from './PersonPage/Components/WarningMarkers.tsx'
+import BailConditions from './PersonPage/Components/BailConditions.tsx'
+
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    
+
 
     <BrowserRouter>
-    
-    <Routes>
 
-      <Route element={<App />}>
-      
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/person/:id" element={<Person />} />
+      <Routes>
 
-        {/* Once personpage has been wired up and styling complete, this will need to be removed */}
+        <Route element={<App />}>
 
-        <Route path="/personpage" element={<PersonPage />} /> 
-
-      
-      </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/person/:id" element={<Person />} />
 
 
+          <Route path='/personpage' element={<PersonPage />}>
 
-    </Routes>
-    
-    
-    
+
+            <Route path='/personpage/overview' element={<Overview />} />
+            <Route path='/personpage/warningmarkers' element={<WarningMarkers />} />
+            <Route path='/personpage/bailconditions' element={<BailConditions />} />
+            {/* Overview, warning markers, bail conditions, etc */}
+
+
+            {/* Default component */}
+            <Route index element={<Overview />} />
+
+
+
+          </Route>
+
+        </Route>
+
+
+
+
+
+      </Routes>
+
+
+
     </BrowserRouter>
 
 

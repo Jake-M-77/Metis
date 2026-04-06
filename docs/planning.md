@@ -87,7 +87,7 @@ Goal: Build the full visual and layout system for Metis using Tailwind CSS
 Goal: Define global application structure
 
 - [x] Navbar styling (primary navigation)
-- [ ] App shell layout (header / sidebar / content structure)
+- [x] App shell layout (header / sidebar / content structure)
 - [x] Home page layout structure
 - [x] Search page layout structure
 - [x] Person page base layout (container + grid foundation)
@@ -108,22 +108,22 @@ Goal: Turn search into a polished UI system
 ### 👤 Phase 4.3 — PersonRecord UI System
 Goal: Build scalable nested record layout
 
-- [ ] Main container layout (split panel system)
-- [ ] Left navigation (overview / custody / etc.)
+- [x] Main container layout (split panel system)
+- [x] Left navigation (overview / custody / etc.)
 - [ ] Secondary navigation (sub-sections)
-- [ ] Content display panel layout
-- [ ] Nested layout structure support (future-proofing)
+- [x] Content display panel layout
+- [x] Nested layout structure support (future-proofing)
 
 ---
 
 ### 🎨 Phase 4.4 — Design System (Tailwind Usage Rules)
 Goal: Ensure UI consistency using Tailwind (NOT a new design system)
 
-- [ ] Spacing consistency rules (padding / margin patterns)
-- [ ] Typography scale (text hierarchy rules)
-- [ ] Colour usage conventions (primary / muted / danger / success)
-- [ ] Border + shadow usage patterns
-- [ ] Define reusable Tailwind patterns (utility combinations)
+- [x] Spacing consistency rules (padding / margin patterns)
+- [x] Typography scale (text hierarchy rules)
+- [x] Colour usage conventions (primary / muted / danger / success)
+- [x] Border + shadow usage patterns
+- [x] Define reusable Tailwind patterns (utility combinations)
 
 ---
 

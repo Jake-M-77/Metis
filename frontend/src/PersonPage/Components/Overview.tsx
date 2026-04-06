@@ -1,23 +1,14 @@
 
 
 
-function PersonOverview() {
+function Overview(){
 
 
-    return (
-        <>
 
-            {/* This will use React router */}
-
-
-            {/* TOP NAV */}
-            <div className="h-12 border-b border-border-default flex items-center gap-4 px-4">
-                <button className="bg-btn-default border-r p-2 rounded-s text-text-primary hover:bg-btn-default-hover">Overview</button>
-                <button className="bg-btn-default border-r p-2 rounded-s text-text-primary hover:bg-btn-default-hover">Warning Markers</button>
-                <button className="bg-btn-default border-r p-2 rounded-s text-text-primary hover:bg-btn-default-hover">Bail Conditions</button>
-            </div>
-
-            {/* MAIN LAYOUT */}
+    return(<>
+    
+    
+        {/* MAIN LAYOUT */}
             <div className="flex h-[calc(100vh-3rem)]">
 
                 <div className="flex min-w-0 relative">
@@ -69,9 +60,10 @@ function PersonOverview() {
                 </div>
 
             </div>
-        </>
-    )
+    
+    
+    
+    </>)
 }
 
-
-export default PersonOverview;
+export default Overview;

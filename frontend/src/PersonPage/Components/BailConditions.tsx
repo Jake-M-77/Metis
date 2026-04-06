@@ -1,0 +1,15 @@
+
+
+
+function BailConditions(){
+
+
+
+    return(<>
+    
+    <h1 className="text-text-primary text-3xl">Hello, World!</h1>
+    
+    </>)
+}
+
+export default BailConditions;

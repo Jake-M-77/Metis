@@ -1,4 +1,4 @@
-import PersonOverview from "../components/PersonPageComponents/PersonOverview";
+import PersonOverview from "../PersonPage/PersonPage";
 
 
 function PersonPage() {
