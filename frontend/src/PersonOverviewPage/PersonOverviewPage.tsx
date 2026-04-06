@@ -8,12 +8,10 @@ function PersonPage() {
     return (
         <>
 
-            {/* This will use React router */}
+        
+                <Navbar />
+                <Outlet />
 
-
-            {/* TOP NAV */}
-            <Navbar />
-            <Outlet />
         </>
     )
 }

@@ -23,9 +23,9 @@ import Search from './pages/Search.tsx'
 import './styles/index.css'
 import './styles/App.css'
 import PersonPage from './pages/PersonPage.tsx'
-import Overview from './PersonPage/Components/Overview.tsx'
-import WarningMarkers from './PersonPage/Components/WarningMarkers.tsx'
-import BailConditions from './PersonPage/Components/BailConditions.tsx'
+import Overview from './PersonOverviewPage/Components/Overview.tsx'
+import WarningMarkers from './PersonOverviewPage/Components/WarningMarkers.tsx'
+import BailConditions from './PersonOverviewPage/Components/BailConditions.tsx'
 
 
 

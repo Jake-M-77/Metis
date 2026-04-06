@@ -1,4 +1,4 @@
-import PersonOverview from "../PersonPage/PersonPage";
+import PersonOverview from "../PersonOverviewPage/PersonOverviewPage";
 
 
 function PersonPage() {
@@ -10,8 +10,8 @@ function PersonPage() {
         {/* This will use ReactRouter */}
 
         <div className="flex h-screen">
-
-            <aside className="w-64 border-r border-border-default bg-elevated">
+            {/* this part has been modified from w-64 to w-36 so that the image (overview image, this is why its been shorted down) and the table for warning markers doesnt overflow on a 1440x900 display. This will need to be resolved when possible. Current temp fix in place **THIS IS NOT PERMANENT** */}
+            <aside className="w-36 border-r border-border-default bg-elevated">
 
                 <nav className="flex flex-col gap-2">
                     <button className="bg-btn-default text-text-primary text-xl p-2 border-b rounded-lg hover:bg-btn-default-hover active:bg-btn-default-active">Overview</button>
