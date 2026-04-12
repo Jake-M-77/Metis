@@ -13,9 +13,74 @@ datasource db {
 }
 
 model Person {
-  id  String  @id @default(uuid())
+  id        String   @id @default(uuid())
   firstName String
   lastName  String
   birthDate DateTime
-  createdAt DateTime  @default(now())
+  sex       String
+  ethnicity String
+  pncId     String
+  createdAt DateTime @default(now())
+
+  comms   Comms[]
+  address PersonAddress[]
+}
+
+model Comms {
+  id           String   @id @default(uuid())
+  contactType  String
+  contactValue String
+  isPrimary    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  person   Person @relation(fields: [personId], references: [id])
+  personId String
+}
+
+model Address {
+  id           String       @id @default(uuid())
+  houseNumber  Int?
+  houseName    String?
+  flatNumber   String?
+  streetName   String
+  townOrCity   String
+  county       String
+  postCode     String
+  propertyType PropertyType @default(HOUSE)
+  notes        String?
+  createdAt    DateTime     @default(now())
+
+  person PersonAddress[]
+}
+
+enum PropertyType {
+  HOUSE
+  FLAT
+  HMO
+  CARAVAN
+}
+
+model PersonAddress {
+  id String @id @default(uuid())
+
+  person   Person @relation(fields: [personId], references: [id])
+  personId String
+
+  address   Address @relation(fields: [addressId], references: [id])
+  addressId String
+
+  relationshipType RelationshipType @default(RESIDES)
+
+  startDate DateTime @default(now())
+  endDate   DateTime?
+
+  notes String?
+
+  createdAt DateTime @default(now())
+}
+
+enum RelationshipType {
+  RESIDES
+  LAST_KNOWN
+  PREVIOUS_ADDRESS
 }

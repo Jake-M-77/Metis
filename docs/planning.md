@@ -58,7 +58,7 @@ Goal: Functional UI for person search system
 
 - [x] Search page UI
 - [x] Person results view
-- [ ] Person detail page
+- [x] Person detail page
 - [x] Routing setup (React Router)
 - [x] API integration layer
 
@@ -110,7 +110,7 @@ Goal: Build scalable nested record layout
 
 - [x] Main container layout (split panel system)
 - [x] Left navigation (overview / custody / etc.)
-- [ ] Secondary navigation (sub-sections)
+- [x] Secondary navigation (sub-sections)
 - [x] Content display panel layout
 - [x] Nested layout structure support (future-proofing)
 
@@ -130,9 +130,9 @@ Goal: Ensure UI consistency using Tailwind (NOT a new design system)
 ### 🧪 Phase 4.5 — Person Detail Page
 Goal: Complete full MVP+ user journey
 
-- [ ] Full person detail page layout
-- [ ] Structured data sections (overview, flags, history, etc.)
-- [ ] Navigation between subsections
+- [x] Full person detail page layout
+- [x] Structured data sections (overview, flags, history, etc.)
+- [x] Navigation between subsections
 - [ ] Integration with PersonRecord layout system
 
 ---
