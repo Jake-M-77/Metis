@@ -12,6 +12,14 @@ datasource db {
   provider = "postgresql"
 }
 
+// =========================
+// Overview Tables
+// =========================
+
+// =========================
+// CORE ENTITY
+// =========================
+
 model Person {
   id        String   @id @default(uuid())
   firstName String
@@ -22,8 +30,15 @@ model Person {
   pncId     String
   createdAt DateTime @default(now())
 
-  comms   Comms[]
-  address PersonAddress[]
+  comms             Comms[]
+  warningMarkers    WarningMarker[]
+  bailConditions    BailCondition[]
+  persondescription PersonDescription[]
+  personAlias       PersonAlias[]
+  custodyPhotos     CustodyPhoto[]
+  document          Document[]
+  personInfo        PersonInfo?
+  address           PersonAddress[]
 }
 
 model Comms {
@@ -50,15 +65,103 @@ model Address {
   notes        String?
   createdAt    DateTime     @default(now())
 
-  person PersonAddress[]
+  personAddresses PersonAddress[]
 }
 
-enum PropertyType {
-  HOUSE
-  FLAT
-  HMO
-  CARAVAN
+model WarningMarker {
+  id           String     @id @default(uuid())
+  markerType   MarkerType @default(INFO)
+  description  String
+  enteredBy    String
+  dateRecorded DateTime   @default(now())
+  createdAt    DateTime   @default(now())
+
+  person   Person @relation(fields: [personId], references: [id])
+  personId String
 }
+
+model BailCondition {
+  id            String        @id @default(uuid())
+  conditionType ConditionType @default(OTHER)
+  startDate     DateTime      @default(now())
+  endDate       DateTime?
+  imposedBy     String
+  description   String
+  createdAt     DateTime      @default(now())
+
+  person   Person @relation(fields: [personId], references: [id])
+  personId String
+}
+
+model PersonDescription {
+  id             String         @id @default(uuid())
+  descriptorType DescriptorType @default(IDENTIFIER)
+  description    String
+  imageURL       String
+  enteredBy      String
+  updatedAt      DateTime
+  createdAt      DateTime       @default(now())
+
+  person   Person @relation(fields: [personId], references: [id])
+  personId String
+}
+
+model PersonAlias {
+  id           String    @id @default(uuid())
+  aliasName    String
+  aliasDob     DateTime?
+  notes        String?
+  enteredBy    String
+  dateRecorded DateTime  @default(now())
+  createdAt    DateTime  @default(now())
+
+  person   Person @relation(fields: [personId], references: [id])
+  personId String
+}
+
+model CustodyPhoto {
+  id         String    @id @default(uuid())
+  imageUrl   String
+  dateTaken  DateTime?
+  uploadedBy String
+  notes      String?
+  createdAt  DateTime  @default(now())
+
+  person   Person @relation(fields: [personId], references: [id])
+  personId String
+}
+
+model Document {
+  id           String       @id @default(uuid())
+  documentType DocumentType @default(OTHER)
+  fileName     String
+  fileUrl      String
+  uploadedBy   String
+  uploadDate   DateTime
+  expiryDate   DateTime?
+  notes        String?
+  createdAt    DateTime     @default(now())
+
+  person   Person @relation(fields: [personId], references: [id])
+  personId String
+}
+
+model PersonInfo {
+  id               String   @id @default(uuid())
+  recordCreatedBy  String
+  sourceSystem     String
+  lastModifiedBy   String
+  lastModifiedDate DateTime
+  changeNotes      String?
+  createdAt        DateTime @default(now())
+
+  person   Person @relation(fields: [personId], references: [id])
+  personId String @unique
+}
+
+// =========================
+// RELATIONSHIP TABLES
+// =========================
 
 model PersonAddress {
   id String @id @default(uuid())
@@ -71,7 +174,7 @@ model PersonAddress {
 
   relationshipType RelationshipType @default(RESIDES)
 
-  startDate DateTime @default(now())
+  startDate DateTime  @default(now())
   endDate   DateTime?
 
   notes String?
@@ -79,8 +182,41 @@ model PersonAddress {
   createdAt DateTime @default(now())
 }
 
+// =========================
+// ENUMS
+// =========================
+
+enum PropertyType {
+  HOUSE
+  FLAT
+  HMO
+  CARAVAN
+}
+
 enum RelationshipType {
   RESIDES
   LAST_KNOWN
   PREVIOUS_ADDRESS
 }
+
+enum MarkerType {
+  INFO
+}
+
+enum ConditionType {
+  OTHER
+  POLICE_BAIL
+  COURT_BAIL
+}
+
+enum DescriptorType {
+  IDENTIFIER
+}
+
+enum DocumentType {
+  OTHER
+}
+
+// =========================
+// End of Overview Tables
+// =========================
