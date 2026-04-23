@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 
 type User = {
     id: string;
@@ -14,6 +15,10 @@ type Props = {
 function PersonDataTable( {users}: Props ) {
 
 
+    const navigate = useNavigate();
+
+
+
     return (<>
 
     <div className="flex justify-center p-8">
@@ -22,6 +27,7 @@ function PersonDataTable( {users}: Props ) {
 
             <thead className="text-2xl">
                 <tr className="">
+                    <th className="px-4 py-2">ID</th>
                     <th className="px-4 py-2">Surname</th>
                     <th className="px-4 py-2">Firstname</th>
                     <th className="px-4 py-2">Date Of Birth</th>
@@ -32,7 +38,8 @@ function PersonDataTable( {users}: Props ) {
             <tbody className="text-2xl cursor-pointer">
 
                 {users.map((user) => (
-                    <tr className="hover:text-primary-hover" key={user.id} onClick={e => console.log(user.id)}>
+                    <tr className="hover:text-primary-hover" key={user.id} onClick={() => navigate(`/person/${user.id}/`) }>
+                        <td className="px-4 py-2">{user.id}</td>
                         <td className="px-4 py-2">{user.lastName}</td>
                         <td className="px-4 py-2">{user.firstName}</td>
                         <td className="px-4 py-2">{user.birthDate.split("T")[0]}</td>

@@ -27,7 +27,7 @@ model Person {
   birthDate DateTime
   sex       String
   ethnicity String
-  pncId     String
+  pncId     String?  //This will need to be made to be nullable by default as not all records will have a PNC ID
   createdAt DateTime @default(now())
 
   comms             Comms[]

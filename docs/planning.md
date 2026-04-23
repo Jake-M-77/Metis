@@ -141,8 +141,8 @@ Goal: Complete full MVP+ user journey
 Goal: Improve backend reliability and data safety
 
 - [ ] Add validation layer (Zod or similar)
-- [ ] Standardise request/response schemas
-- [ ] Improve backend error handling consistency
+- [x] Standardise request/response schemas
+- [x] Improve backend error handling consistency
 - [ ] Ensure API contracts are stable for frontend
 
 ---

@@ -48,15 +48,14 @@ createRoot(document.getElementById('root')!).render(
 
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/person/:id" element={<Person />} />
 
 
-          <Route path='/personpage' element={<PersonPage />}>
+          <Route path='/person/:id' element={<PersonPage />}>
           {/* Navigates to overview/home when loading person */}
-            <Route index element={<Navigate to='/personpage/overview/home' replace />} />
+            <Route index element={<Navigate to='overview/home' replace />} />
 
             {/* people page */}
-            <Route path='/personpage/people' element={<People />}>
+            <Route path='people' element={<People />}>
             
             
             </Route>
@@ -64,16 +63,16 @@ createRoot(document.getElementById('root')!).render(
 
 
             {/* Overview Page */}
-            <Route path='/personpage/overview' element={<PersonOverviewPage />}>
+            <Route path='overview' element={<PersonOverviewPage />}>
 
-              <Route path='/personpage/overview/home' element={<Overview />} />
-              <Route path='/personpage/overview/warningmarkers' element={<WarningMarkers />} />
-              <Route path='/personpage/overview/bailconditions' element={<BailConditions />} />
-              <Route path='/personpage/overview/descriptions' element={<Description />} />
-              <Route path='/personpage/overview/details' element={<AliasDetails />} />
-              <Route path='/personpage/overview/custodyphotos' element={<CustodyPhotos />} />
-              <Route path='/personpage/overview/Docs' element={<Documents />} />
-              <Route path='/personpage/overview/info' element={<Info />} />
+              <Route path='home' element={<Overview />} />
+              <Route path='warningmarkers' element={<WarningMarkers />} />
+              <Route path='bailconditions' element={<BailConditions />} />
+              <Route path='descriptions' element={<Description />} />
+              <Route path='details' element={<AliasDetails />} />
+              <Route path='custodyphotos' element={<CustodyPhotos />} />
+              <Route path='Docs' element={<Documents />} />
+              <Route path='info' element={<Info />} />
 
               {/* Default component */}
               <Route index element={<Overview />} />

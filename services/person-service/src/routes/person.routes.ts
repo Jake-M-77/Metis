@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getPersons, createPerson, getPersonById, updatePerson, deletePerson, getPersonByFirstName } from "../controllers/person.controller.js";
+import { getPersons, createPerson, getPersonById, updatePerson, deletePerson, getPersonByFirstName, getPersonWarningMarkers, getPersonActivePhoneNumber, getPersonActiveEmailAddress, getPersonActiveHomeAddress } from "../controllers/person.controller.js";
 
 
 console.log("ROUTES LOADED")
@@ -15,7 +15,22 @@ router.post("/persons", createPerson);
 router.get("/persons/search/", getPersonByFirstName);
 
 
+
+
+// Get person by ID
 router.get("/persons/:id", getPersonById);
+
+//Get Person active Phone number
+router.get("/persons/:id/active/number", getPersonActivePhoneNumber);
+
+//Get Person active email address
+router.get("/persons/:id/active/email", getPersonActiveEmailAddress);
+
+//Get person active address
+router.get("/persons/:id/active/address", getPersonActiveHomeAddress);
+
+//Get person warning markers
+router.get("/persons/:id/warning-markers", getPersonWarningMarkers);
 
 router.put("/persons/:id", updatePerson)
 
