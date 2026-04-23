@@ -2,6 +2,7 @@ import request from "supertest";
 import { app, server } from "../src/index.js";
 import { prisma } from "../src/db/prisma.js";
 import { resolve } from "node:dns";
+import { successResponse } from "../src/utils/ApiResponse.js";
 
 
 
@@ -20,6 +21,9 @@ describe("Person Service Endpoints", () => {
         firstName: "Auto",
         lastName: "Test",
         birthDate: "2000-01-01T00:00:00Z",
+        sex: "Male",
+        ethnicity: "White-British",
+        pncId: "UNKNOWN",
       });
 
     expect(res.statusCode).toBe(201);
@@ -44,7 +48,7 @@ describe("Person Service Endpoints", () => {
     const res = await request(app).get(`/persons/${personId}`);
 
     expect(res.statusCode).toBe(200);
-    expect(res.body.id).toBe(personId);
+    expect(res.body.data.id).toBe(personId);
   });
 
   // UPDATE
