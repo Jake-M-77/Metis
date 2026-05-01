@@ -1,8 +1,36 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getPersonBailConditions } from "../../services/personService";
+import type { BailCondition } from "../../types/bailCondition";
 
 
 
 function BailConditions() {
 
+    const userId = useParams();
+
+
+    const [bailConditions, setBailConditions] = useState<BailCondition[]>([]);
+
+    useEffect(() => {
+
+        async function loadBailConditions() {
+
+            try {
+                const res = await getPersonBailConditions(`${userId.id}`)
+                console.log(res); // for debug purpose
+                setBailConditions(res);
+
+
+            } catch (error) {
+                console.error("Failed to load bail conditions", error);
+            }
+
+        }
+
+        loadBailConditions();
+
+    }, [userId.id])
 
 
     return (<>
@@ -10,308 +38,34 @@ function BailConditions() {
         {/* removed: overflow-hidden from div className, this is to allow scrolling of BC menu. However, for future this should not be needed as anything that is not active or in breach will
         be in a archive page which will have scroll feature, and/or a dedicated component */}
 
-        <div className="w-full "> 
+        <div className="w-full ">
             <table className="mt-4 w-full table-fixed">
 
                 <thead>
                     <tr className="border-2 text-text-primary">
-                        <th className="border-2 w-1/12">Type</th>
+                        <th className="border-2 w-2/12 text-wrap">Type</th>
                         <th className="border-2 w-2/12">Start Date</th>
                         <th className="border-2 w-2/12">End Date</th>
-                        <th className="border-2 w-1/12">Status</th>
-                        <th className="border-2 w-5/12">Imposed By</th>
-                        <th className="border-2 w-5/12">Description</th>
+                        <th className="border-2 w-3/12">Imposed By</th>
+                        <th className="border-2 w-7/12">Description</th>
 
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
 
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
+                    {bailConditions.map((conditon) =>
+                        <tr className="border-2" key={conditon.id}>
 
-                        <td className="border-r text-text-primary ">06/04/2026</td>
+                            <td className="border-r text-text-primary text-wrap">{conditon.conditionType.split("_").join(" ")}</td>
+                            <td className="border-r text-text-primary ">{conditon.startDate.split("T")[0]}</td>
+                            <td className="border-r text-text-primary ">{conditon.endDate && `${conditon.endDate.split("T")[0]}` }</td>
+                            <td className="border-r text-text-primary ">{conditon.imposedBy}</td>
+                            <td className="border-r text-text-primary text-wrap">{conditon.description}</td>
 
-                        <td className="border-r text-text-primary ">InActive</td>
+                        </tr>
 
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
-                    <tr className="border-2">
-                        <td className="border-r text-text-primary ">POLICE BAIL</td>
-
-                        <td className="border-r text-text-primary ">
-                            06/04/2024
-                        </td>
-
-                        <td className="border-r text-text-primary ">06/04/2026</td>
-
-                        <td className="border-r text-text-primary ">InActive</td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                             POLICE REF:
-                        </td>
-
-                        <td className="border-r text-text-primary break-words whitespace-normal">
-                            Must not contact the named person directly or indirectly under any circumstances.
-                            Not to contact the victim directly or indirectly by any means including phone, text, social media, or third parties.
-                            The defendant is prohibited from contacting the protected person directly or indirectly.
-                            No direct or indirect communication with the named individual, including via friends, family, or social media platforms.
-                            Must not attempt to contact or communicate with the protected party in any form, whether directly or through a third party.
-                            No contact with the victim either directly, indirectly, or through any digital or electronic means.
-                            The subject is prohibited from initiating or encouraging any form of contact with the protected person.
-                        </td>
-                    </tr>
-
+                    )}
 
                 </tbody>
 
@@ -323,3 +77,4 @@ function BailConditions() {
 }
 
 export default BailConditions;
+

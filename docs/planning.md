@@ -48,7 +48,7 @@ Goal: Ensure backend reliability before frontend integration
 
 - [x] Set up Postman collection for manual testing
 - [x] Implement automated tests (Jest + Supertest)
-- [ ] Add validation layer (Zod or similar)
+- [x] Add validation layer (Zod or similar)
 - [x] Improve error handling (consistent responses)
 
 ---
@@ -133,17 +133,17 @@ Goal: Complete full MVP+ user journey
 - [x] Full person detail page layout
 - [x] Structured data sections (overview, flags, history, etc.)
 - [x] Navigation between subsections
-- [ ] Integration with PersonRecord layout system
+- [x] Integration with PersonRecord layout system
 
 ---
 
 ### 🔒 Phase 4.6 — Validation & API Hardening
 Goal: Improve backend reliability and data safety
 
-- [ ] Add validation layer (Zod or similar)
+- [x] Add validation layer (Zod or similar)
 - [x] Standardise request/response schemas
 - [x] Improve backend error handling consistency
-- [ ] Ensure API contracts are stable for frontend
+- [x] Ensure API contracts are stable for frontend
 
 ---
 
