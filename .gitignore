@@ -1,8 +1,20 @@
+# macOS
+.DS_Store
+
+# dependencies
+node_modules
+
+# environment
+.env
+
+# generated / tooling noise
+services/**/node_modules
+services/**/.DS_Store
+
+# Metis Docs
 docs/frontend-architecture.md
 docs/Metis-Styling-architecture.md
 docs/Metis-UI-Colour-System.md
 docs/Metis-TobeSortedList.md
 docs/Metis-person-domain-data-model.md
 docs/quick-commands.md
-.DS_Store
-services/.DS_Store
