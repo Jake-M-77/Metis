@@ -99,7 +99,7 @@ model PersonDescription {
   description    String
   imageURL       String
   enteredBy      String
-  updatedAt      DateTime
+  updatedAt      DateTime //possibly change this to where its needed for UPDATE but not CREATE
   createdAt      DateTime       @default(now())
 
   person   Person @relation(fields: [personId], references: [id])
