@@ -10,7 +10,7 @@ router.get("/documents", getAllDocuments)
 
 router.get("/documents/:id", getDocumentsById)
 
-router.post("/documents", createDocuments)
+router.post("/documents/", createDocuments)
 
 router.put("/documents/:id", updateDocuments)
 

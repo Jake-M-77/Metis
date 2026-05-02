@@ -65,10 +65,11 @@ function CustodyPhotos(){
 
                             <td className="border-r text-text-primary ">{photo.notes}</td>
                             <td className="border-r text-text-primary ">{photo.uploadedBy}</td>
-                            <td className="border-r text-text-primary ">{photo.dateTaken.split("T")[0]}</td>
-                            <td className="border-r text-text-primary text-wrap ">{photo.createdAt.split("T")[0]}</td>
+                            <td className="border-r text-text-primary ">{photo.dateTaken ? photo.dateTaken.split("T")[0] : "Unknown"}</td> 
+                            <td className="border-r text-text-primary text-wrap ">{photo.createdAt.split("T")[0]}</td> 
                             <td className="border-r text-text-primary text-wrap "><a href={photo.imageUrl} target="_blank"><img className="h-48" src={photo.imageUrl} alt={photo.notes}/></a></td>
 
+                            {/* FIX: added ternary operator for dateTaken as this can be null in DB, and without this, it breaks */}
 
 
 
