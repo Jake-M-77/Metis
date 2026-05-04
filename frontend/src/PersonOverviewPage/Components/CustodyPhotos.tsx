@@ -28,7 +28,7 @@ function CustodyPhotos(){
 
         loadPersonAliases();
 
-    }, [userId])
+    }, [userId.id])
 
     if (custodyPhotos.length == 0) {
         return (<>

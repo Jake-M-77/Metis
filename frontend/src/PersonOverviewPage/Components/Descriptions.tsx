@@ -27,7 +27,7 @@ function Description() {
 
         loadPersonDescriptions();
 
-    }, [userId])
+    }, [userId.id])
 
     if (personDescriptions.length == 0) {
        return(<>

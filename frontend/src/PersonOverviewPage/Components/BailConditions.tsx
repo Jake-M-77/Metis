@@ -32,6 +32,14 @@ function BailConditions() {
 
     }, [userId.id])
 
+    if (bailConditions.length == 0) {
+       return(<>
+       
+       <div className="text-text-primary text-center pt-8 text-3xl">No Bail Conditions</div>
+       
+       </>) 
+    }
+
 
     return (<>
 

@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import type { Person } from "../../types/person";
 import { handleHomeAddressFormatting } from "../../utils/formatAddress";
-import { getPersonActiveEmailAddress, getPersonActiveHomeAddress, getPersonActivePhoneNumber, getPersonById, transformPersonData } from "../../services/personService";
+import { getPersonActiveEmailAddress, getPersonActiveHomeAddress, getPersonActivePhoneNumber, transformPersonData } from "../../services/personService";
 
 
 function Overview() {
@@ -50,7 +50,7 @@ function Overview() {
             try{
                 const address = await getPersonActiveHomeAddress(`${userId.id}`);
                 console.log(address);
-                const x = await handleHomeAddressFormatting(address);
+                const x = handleHomeAddressFormatting(address);
                 setHomeAddress(x);
             } catch (error) {
                 console.error("Failed to load person home address");
@@ -80,8 +80,8 @@ function Overview() {
                         <p className="text-text-primary text-3xl border-b m-2">Surname: <span>{personData?.lastName ?? "Unknown"}</span> </p>
                         <p className="text-text-primary text-3xl border-b m-2">Date Of Birth:  <span>{personData?.birthDate?.toLocaleDateString() ?? "Unknown"}</span> </p>
                         <p className="text-text-primary text-3xl border-b m-2">Last Known Address: <span>{homeAddress ?? "Unknown"}</span> </p>
-                        <p className="text-text-primary text-3xl border-b m-2">Telephone Number:  <span>{phonenumber.contactValue ?? "Unknown"}</span></p>
-                        <p className="text-text-primary text-3xl border-b m-2">Email Address:  <span>{emailAddress.contactValue ?? "Unknown"}</span></p>
+                        <p className="text-text-primary text-3xl border-b m-2">Telephone Number:  <span>{phonenumber?.contactValue ?? "Unknown"}</span></p>
+                        <p className="text-text-primary text-3xl border-b m-2">Email Address:  <span>{emailAddress?.contactValue ?? "Unknown"}</span></p>
                         <p className="text-text-primary text-3xl border-b m-2">PNC ID: <span>{personData?.pncId ?? "Unknown"}</span> </p>
                         <p className="text-text-primary text-3xl border-b m-2">Sex: <span>{personData?.sex ?? "Unknown"}</span> </p>
                         <p className="text-text-primary text-3xl border-b m-2">Height:  </p>
