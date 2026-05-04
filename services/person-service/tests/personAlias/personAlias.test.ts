@@ -58,6 +58,7 @@ describe("Person Alias Endpoints - without setup", () => {
         })
 
     afterAll(async () => {
+        if (personId) await deleteTestPerson(personId);
         await prisma.$disconnect();
     });
 
