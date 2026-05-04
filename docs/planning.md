@@ -150,10 +150,10 @@ Goal: Improve backend reliability and data safety
 ### 🧪 Phase 4.7 — Frontend Component Testing
 Goal: Ensure UI reliability as complexity grows
 
-- [ ] Unit tests for key components
-- [ ] React Testing Library setup
-- [ ] Component rendering tests
-- [ ] UI behaviour validation (props/state changes)
+- [x] Unit tests for key components
+- [x] React Testing Library setup
+- [x] Component rendering tests
+- [x] UI behaviour validation (props/state changes)
 
 ---
 
