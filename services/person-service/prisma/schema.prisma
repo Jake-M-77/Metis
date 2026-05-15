@@ -27,7 +27,7 @@ model Person {
   birthDate DateTime
   sex       String
   ethnicity String
-  pncId     String?  //This will need to be made to be nullable by default as not all records will have a PNC ID
+  pncId     String? //This will need to be made to be nullable by default as not all records will have a PNC ID
   createdAt DateTime @default(now())
 
   comms             Comms[]
@@ -39,6 +39,11 @@ model Person {
   document          Document[]
   personInfo        PersonInfo?
   address           PersonAddress[]
+  
+  sourceRelations PersonAssociation[] @relation("SourcePerson")
+  targetRelations PersonAssociation[] @relation("TargetPerson")
+
+
 }
 
 model Comms {
@@ -219,4 +224,31 @@ enum DocumentType {
 
 // =========================
 // End of Overview Tables
+// =========================
+
+// =========================
+// People Table page
+// =========================
+
+model PersonAssociation {
+  id String @id @default(uuid())
+
+  sourcePersonId String
+  sourcePerson   Person @relation("SourcePerson", fields: [sourcePersonId], references: [id])
+
+  targetPersonId String
+  targetPerson   Person @relation("TargetPerson", fields: [targetPersonId], references: [id])
+
+  relationType RelationType @default(UNKNOWN)
+
+  createdAt DateTime @default(now())
+
+}
+
+enum RelationType {
+  UNKNOWN
+}
+
+// =========================
+// End of People Table page
 // =========================
