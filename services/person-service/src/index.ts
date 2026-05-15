@@ -9,7 +9,8 @@ import personDescriptionsRoutes from "./routes/personDescriptions.routes.js";
 import personAliasesRoutes from "./routes/personAliases.routes.js";
 import custodyPhotosRoutes from "./routes/custodyPhotos.routes.js";
 import personDocumentsRoutes from "./routes/documents.routes.js";
-import personInfoRoutes from "./routes/personInfo.routes.js"
+import personInfoRoutes from "./routes/personInfo.routes.js";
+import personAssociationRoutes from "./routes/personAssociations.routes.js";
 
 
 export const app = express();
@@ -43,6 +44,8 @@ app.use("/", custodyPhotosRoutes)
 app.use("/", personDocumentsRoutes)
 
 app.use("/", personInfoRoutes)
+
+app.use("/", personAssociationRoutes)
 
 
 
