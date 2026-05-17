@@ -2,6 +2,7 @@ import { errorResponse, successResponse } from "../utils/ApiResponse.js";
 import type { Request, Response } from "express";
 import { createPersonAssociationSchema, updatePersonAssociationSchema } from "../validation/personAssociations.schema.js";
 import { getAllPersonAssociationsService, createPersonAssociationsService, updatePersonAssociationsService, deletePersonAssociationsService, getPersonAssociationsByIdService, getPersonAssociationsByPersonIdService } from "../services/personAssociations.service.js";
+import resolvePersonAssociations from "../helpers/resolvePersonAssociations.js";
 
 
 
@@ -43,7 +44,11 @@ export const getPersonAssociationsByPersonId = async (req: Request, res: Respons
             return res.status(404).json(errorResponse("No person associates found"))
         }
 
-        return res.status(200).json(successResponse(personAssociations));
+        const linkedPersonAssociations = resolvePersonAssociations(personAssociations, req.params.id as string);
+
+        return res.status(200).json(successResponse(linkedPersonAssociations));
+
+
     }catch (error) 
     {
         return res.status(500).json(errorResponse("Internal server error"))

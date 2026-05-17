@@ -19,7 +19,11 @@ export const getPersonAssociationsByPersonIdService = async (id: string) => {
                 {targetPersonId: id}
             ]
 
-        },
+        },  
+        include: {
+            sourcePerson: true,
+            targetPerson: true
+        }
     })
 }
 
