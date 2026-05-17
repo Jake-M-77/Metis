@@ -246,7 +246,10 @@ model PersonAssociation {
 }
 
 enum RelationType {
+  CHILD_OF
+  PARENT_OF
   UNKNOWN
+  TESTING
 }
 
 // =========================

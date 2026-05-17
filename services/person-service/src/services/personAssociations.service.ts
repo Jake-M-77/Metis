@@ -14,8 +14,16 @@ export const getPersonAssociationsByIdService = async (id: string) => {
 export const getPersonAssociationsByPersonIdService = async (id: string) => {
     return prisma.personAssociation.findMany({
         where: {
-            sourcePersonId: id
-        },
+            OR: [
+                {sourcePersonId: id},
+                {targetPersonId: id}
+            ]
+
+        },  
+        include: {
+            sourcePerson: true,
+            targetPerson: true
+        }
     })
 }
 
