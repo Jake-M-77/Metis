@@ -44,11 +44,13 @@ describe("Person Associations Endpoints = with auto setup", () => {
     })
 
     // GET ASSOCIATION BY PERSON ID
-    it("should return person association using sourcePersonId", async () => {
+    it("should return resolved outgoing relation for sourcePersonId", async () => {
         const res = await request(app).get(`/person-associations/pid/${sourcePersonId}`)
 
         expect(res.statusCode).toBe(200);
-        expect(res.body.data[0].id).toBe(personAssociationId);
+        expect(res.body.data[0].person.id).toBe(targetPersonId);
+        expect(res.body.data[0].relationType).toBe("TESTING");
+        expect(res.body.data[0].direction).toBe("OUTGOING");
     })
 
     // UPDATE
