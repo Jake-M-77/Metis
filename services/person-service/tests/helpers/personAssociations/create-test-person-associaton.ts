@@ -11,7 +11,7 @@ export const createTestPersonAssociation = async (sourcePersonId: string, target
     .send({
         sourcePersonId: sourcePersonId,
         targetPersonId: targetPersonId,
-        relationType: "UNKNOWN",
+        relationType: "TESTING",
     });
 
     if (res.statusCode !== 201) {
