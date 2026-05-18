@@ -88,16 +88,38 @@ describe("Person Associations Endpoints - without setup", () => {
         .send({
             sourcePersonId: sourcePersonId,
             targetPersonId: targetPersonId,
-            relationType: "UNKNOWN",
+            relationType: "TESTING",
         });
 
         expect(res.statusCode).toBe(201);
         expect(res.body.data.sourcePersonId).toBeDefined();
-        expect(res.body.data.relationType).toBe("UNKNOWN");
+        expect(res.body.data.relationType).toBe("TESTING");
 
         personAssociationId = res.body.data.id;
 
     });
+
+    it("should check the OUTGOING relationType as 'TESTING' ", async () => {
+        const res = await request(app)
+        .get(`/person-associations/pid/${sourcePersonId}`);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.data[0].relationType).toBe("TESTING");
+        expect(res.body.data[0].direction).toBe("OUTGOING");
+        
+        
+    })
+
+    it("should check the 'INCOMING' relationType as 'TESTING_INVERSE' ", async () => {
+        const res = await request(app)
+        .get(`/person-associations/pid/${targetPersonId}`);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.data[0].relationType).toBe("TESTING_INVERSE");
+        expect(res.body.data[0].direction).toBe("INCOMING");
+        
+        
+    })
 
     // DELETE
     it("Should delete person association", async () => { 
