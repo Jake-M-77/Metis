@@ -32,7 +32,7 @@ Loading the full person response was deemed less suitable due to:
 
 # Decision
 
-For the loading of the person association card it was decided to ony load the firstname, lastname, DOB, relation. This is due to it meeting METIS priorities.
+For the loading of the person association card it was decided to only load the firstname, lastname, DOB, relation. This is due to it meeting METIS priorities.
 
 ---
 

@@ -72,9 +72,6 @@ Optional section.
 
 # Related Documents
 
-Optional.
-
-Example:
 - `PeoplePagePlanning.md`
 - `people-page-architecture.md`
 - `people-page-system-architecture.mmd`

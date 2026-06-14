@@ -1,7 +1,7 @@
 # ADR-002: Card components uses component level API calling for custody image fetching
 
 ## Status
-Accepted 
+Accepted | Partially superseded by ADR-004
 
 ---
 
@@ -70,4 +70,5 @@ Optional section.
 - `custody-image-data-flow.mmd`
 - `ADR-001-card-based-rendering.md`
 - `PeoplePagePlanning.md`
+- `ADR-004-batch-image-fetching-strategy.md`
 
