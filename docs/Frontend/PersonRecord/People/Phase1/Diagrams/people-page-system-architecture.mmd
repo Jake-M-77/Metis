@@ -1,0 +1,13 @@
+---
+config:
+  layout: dagre
+---
+flowchart TB
+    PeoplePage["People Page (Frontend)"] --> PersonAPI["Person Association API"] & PersonCard["Person Association Card (UI Component)"]
+    PersonAPI --> PersonDB["PersonAssociation DB"] & PeoplePage
+    PersonCard --> ImageAPI["Custody Image API"]
+    ImageAPI --> ImageDB["Custody Image DB"] & FileStore["Image File Storage (Local / Future S3)"]
+
+     PersonDB:::db
+     ImageDB:::db
+    classDef db fill:#2b2b2b,stroke:#999,color:#fff

@@ -1,0 +1,18 @@
+flowchart TB
+
+    Start["User opens People Page"]
+
+    LoadPeople["Fetch Person Associations"]
+    RenderCards["Render Person Cards"]
+
+    LoadImage["Card requests Custody Image"]
+    ImageCheck{"Image exists?"}
+
+    ShowImage["Render Image"]
+    Fallback["Render Fallback Placeholder"]
+
+    Start --> LoadPeople --> RenderCards
+    RenderCards --> LoadImage --> ImageCheck
+
+    ImageCheck -->|Yes| ShowImage
+    ImageCheck -->|No| Fallback
