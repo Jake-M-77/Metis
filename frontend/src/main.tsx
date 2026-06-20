@@ -32,7 +32,7 @@ import CustodyPhotos from './PersonOverviewPage/Components/CustodyPhotos.tsx'
 import Documents from './PersonOverviewPage/Components/Documents.tsx'
 import Info from './PersonOverviewPage/Components/Info.tsx'
 import PersonOverviewPage from './PersonOverviewPage/PersonOverviewPage.tsx'
-import People from './pages/People.tsx'
+import PeoplePage from './pages/PeoplePage/PeoplePage.tsx'
 
 
 
@@ -55,7 +55,7 @@ createRoot(document.getElementById('root')!).render(
             <Route index element={<Navigate to='overview/home' replace />} />
 
             {/* people page */}
-            <Route path='people' element={<People />}>
+            <Route path='people' element={<PeoplePage />}>
             
             
             </Route>
