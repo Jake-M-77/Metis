@@ -1,7 +1,8 @@
 import type { Request, Response } from "express";
 import { successResponse, errorResponse } from "../utils/ApiResponse.js";
-import { getAllCustodyPhotosService, getCustodyPhotosByIdService, createCustodyPhotosService, deleteCustodyPhotosService, updateCustodyPhotosService } from "../services/custodyPhotos.service.js";
+import { getAllCustodyPhotosService, getCustodyPhotosByIdService, createCustodyPhotosService, deleteCustodyPhotosService, updateCustodyPhotosService, batchCustodyPhotosService } from "../services/custodyPhotos.service.js";
 import { createCustodyPhotoSchema, updateCustodyPhotoSchema } from "../validation/custodyPhotos.schema.js";
+import { array } from "zod";
 
 
 
@@ -84,6 +85,26 @@ export const deleteCustodyPhotos = async(req: Request, res: Response) => {
 
     } catch (error) {
         return res.status(500).json(errorResponse("Internal server error"))
+    }
+
+}
+
+
+export const batchCustodyPhotos = async(req: Request, res: Response) => {
+
+    const personIds = req.body;
+
+    if (!Array.isArray(personIds)) {
+        return res.status(400).json({ error: "Payload must be an array"})
+    }
+
+
+    try {
+        const batchCustodyPhotos = await batchCustodyPhotosService(personIds);
+
+        return res.status(200).json(successResponse(batchCustodyPhotos));
+    } catch (error) {
+        return res.status(500).json(errorResponse("Internal server error"));
     }
 
 }
