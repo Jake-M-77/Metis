@@ -3,6 +3,10 @@ import PeoplePageCard from "./Components/PeoplePageCard";
 import { getPersonAssociations } from "../../services/personAssociationService";
 import { useParams } from "react-router-dom";
 import { PersonAssociation } from "../../types/personAssociation";
+import { getBatchCustodyImages } from "../../services/batchCustodyImageService";
+
+
+import metisLoadingImage from "../../assets/METISLoadingImage.png"
 
 
 
@@ -12,14 +16,26 @@ function PeoplePage() {
 
     const [associations, setAssociations] = useState<PersonAssociation[]>([]);
     const [loading, setLoading] = useState(true);
+    const [batchCustodyImages, setBatchCustodyImages] = useState<Record<string, string>>();
 
 
     useEffect(() => {
         async function load(id:string) {
+
             const data = await getPersonAssociations(id);
-            console.log(id);
-            console.log("API RESPONSE:", data);
             setAssociations(data);
+
+
+            const personIds: string[] = [];
+            data.forEach(element => {
+                personIds.push(element.person.id);
+            });
+
+
+            const batchImages = await getBatchCustodyImages(personIds);
+            setBatchCustodyImages(batchImages);
+
+
             setLoading(false);            
         }
 
@@ -29,7 +45,6 @@ function PeoplePage() {
 
 
     }, []);
-
 
     return (<>
 
@@ -41,6 +56,7 @@ function PeoplePage() {
                 <PeoplePageCard
                 key={assoc.person.id}
                 association={assoc}
+                imageURL={batchCustodyImages ? batchCustodyImages?.[`${assoc.person.id}`] : metisLoadingImage} 
                 />
             ))}
 

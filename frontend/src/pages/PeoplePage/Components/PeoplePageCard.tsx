@@ -1,10 +1,28 @@
 import { Link } from "react-router-dom";
 import { PersonAssociation } from "../../../types/personAssociation";
 
+import metis404Image from "../../../assets/METIS404Image.png";
+import metisLoadingImage from "../../../assets/METISLoadingImage.png";
+import { useEffect, useState } from "react";
 
-function PeoplePageCard({ association }: { association: PersonAssociation}) {
 
-    
+
+function PeoplePageCard({ association, imageURL }: { association: PersonAssociation, imageURL: string | undefined }) {
+
+    const [image, setImage] = useState(metisLoadingImage)
+
+    useEffect(() => {
+
+        if (imageURL == undefined) {
+                setImage(metis404Image);
+            }
+            else
+            {
+                setImage(imageURL);
+            }
+
+        
+    }, [imageURL])
 
     return (<>
 
@@ -14,7 +32,7 @@ function PeoplePageCard({ association }: { association: PersonAssociation}) {
 
             <img
                 className="inline-block m-auto w-32 pb-4"
-                src="https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png"
+                src={image}
                 alt="person image">
             </img>
 
