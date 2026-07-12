@@ -17,32 +17,41 @@ function PeoplePage() {
     const [associations, setAssociations] = useState<PersonAssociation[]>([]);
     const [loading, setLoading] = useState(true);
     const [batchCustodyImages, setBatchCustodyImages] = useState<Record<string, string>>();
+    const [imageServiceFailed, setImageServiceFailed] = useState(false);
 
 
     useEffect(() => {
-        async function load(id:string) {
+        async function load(id: string) {
 
-            const data = await getPersonAssociations(id);
-            setAssociations(data);
+            var personIds: string[] = [];
 
+            try {
+                const data = await getPersonAssociations(id);
+                setAssociations(data);
 
-            const personIds: string[] = [];
-            data.forEach(element => {
-                personIds.push(element.person.id);
-            });
+                data.forEach(element => {
+                    personIds.push(element.person.id);
+                });
+            } catch (error) {
+                console.log("Failed to load person associations:", error);
+            }
 
+            if (personIds.length > 0) {
+                try {
+                    const batchImages = await getBatchCustodyImages(personIds);
+                    setBatchCustodyImages(batchImages);
+                    console.log(batchImages);
 
-            const batchImages = await getBatchCustodyImages(personIds);
-            setBatchCustodyImages(batchImages);
+                } catch (error) {
+                    setImageServiceFailed(true);
+                    console.error("Failed to laod custody images:", error);
+                }
+            }
 
-
-            setLoading(false);            
+            setLoading(false);
         }
 
-
         load(`${userId.id}`);
-
-
 
     }, []);
 
@@ -54,9 +63,10 @@ function PeoplePage() {
 
             {associations.map((assoc) => (
                 <PeoplePageCard
-                key={assoc.person.id}
-                association={assoc}
-                imageURL={batchCustodyImages ? batchCustodyImages?.[`${assoc.person.id}`] : metisLoadingImage} 
+                    key={assoc.person.id}
+                    association={assoc}
+                    imageURL={batchCustodyImages ? batchCustodyImages?.[`${assoc.person.id}`] : metisLoadingImage}
+                    imageServiceFailed={imageServiceFailed}
                 />
             ))}
 
