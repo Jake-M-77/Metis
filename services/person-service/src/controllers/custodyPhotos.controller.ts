@@ -95,7 +95,7 @@ export const batchCustodyPhotos = async(req: Request, res: Response) => {
     const personIds = req.body;
 
     if (!Array.isArray(personIds)) {
-        return res.status(400).json({ error: "Payload must be an array"})
+        return res.status(400).json(errorResponse("Payload must be an array"))
     }
 
 
