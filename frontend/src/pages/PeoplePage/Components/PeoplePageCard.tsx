@@ -17,7 +17,7 @@ function PeoplePageCard({ association, imageURL, imageServiceFailed }: { associa
         if (imageServiceFailed === true) {
             setImage(metis500Image)
         }
-        else if (imageURL == undefined) {
+        else if (imageURL == undefined || imageURL == "NO_IMAGE") {
             setImage(metis404Image);
         }
         else {
