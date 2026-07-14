@@ -8,6 +8,7 @@ import { getBatchCustodyImages } from "../../services/batchCustodyImageService";
 
 import metisLoadingImage from "../../assets/METISLoadingImage.png"
 import { custodyImageCache } from "../../cache/imageCache";
+import { addMissingDataToCache, addNegativeCache, getCachedImages, checkCustodyImageCache } from "../../services/cache/custodyImageCacheService";
 
 
 
@@ -24,7 +25,7 @@ function PeoplePage() {
     useEffect(() => {
         async function load(id: string) {
 
-            const personIds: string[] = []; /// chnage this to const, next session
+            const personIds: string[] = [];
 
             try {
                 const data = await getPersonAssociations(id);
@@ -37,52 +38,20 @@ function PeoplePage() {
                 console.log("Failed to load person associations:", error);
             }
 
-            const missingIds: string[] = [];
-            const cachedImages: Record<string, string> = {};
+            const idsMissingFromCache: Array<string> = await checkCustodyImageCache(personIds);
 
-            const ImagesAPIResponse: Record<string, string> = {};
-
-            personIds.forEach(id => {
-                const batchImage = custodyImageCache.get(id)
-
-                if (!batchImage) {
-                    missingIds.push(id)
-                }
-                else {
-                    cachedImages[id] = batchImage
-                }
-            })
-
-            console.log("MISSING IDS:", missingIds);
+            console.log("MISSING IDS:", idsMissingFromCache);
             console.log("CACHE:", custodyImageCache);
 
 
-            if (personIds.length > 0 && missingIds.length > 0) {
+            if (personIds.length > 0 && idsMissingFromCache.length > 0) {
                 try {
 
+                    const batchImages = await getBatchCustodyImages(idsMissingFromCache);
 
+                    addMissingDataToCache(batchImages);
 
-
-                    const batchImages = await getBatchCustodyImages(missingIds);
-
-                    Object.entries(batchImages).forEach(([id, imageUrl]) => {
-                        ImagesAPIResponse[id] = imageUrl
-                        custodyImageCache.set(id, imageUrl);
-
-                        // if (!Object.hasOwnProperty(missingIds.forEach(id => {}))) {
-                        //     custodyImageCache.set(id, "NO_IMAGE")
-                        // }
-
-                        missingIds.forEach(id => {
-                            const keyExists = custodyImageCache.get(id)
-
-                            if(!keyExists)
-                            {
-                                custodyImageCache.set(id, "NO_IMAGE")
-                            }
-                        })
-
-                    })
+                    addNegativeCache(idsMissingFromCache);
 
                     console.warn(batchImages);
 
@@ -90,22 +59,11 @@ function PeoplePage() {
 
                 } catch (error) {
                     setImageServiceFailed(true);
-                    console.error("Failed to laod custody images:", error);
+                    console.error("Failed to load custody images:", error);
                 }
             }
-
-            const finalState: Record<string, string> = {};
-
-            Object.entries(cachedImages).forEach(([id, imageUrl]) => {
-                finalState[id] = imageUrl
-            })
-
-            Object.entries(ImagesAPIResponse).forEach(([id, imageUrl]) => {
-                finalState[id] = imageUrl
-            })
-
-
-            setBatchCustodyImages(finalState);
+            
+            setBatchCustodyImages(getCachedImages());
 
             setLoading(false);
         }

@@ -26,6 +26,14 @@ export class LRUCache<TKey, TValue>
     remove(key: TKey) : void {
         this.cache.delete(key);
     }
-
     
+    getAll() {
+        const cachex: Map<TKey, TValue> = new Map;    
+    
+        this.cache.forEach((TValue, TKey) => {
+            cachex.set(TKey, TValue)
+        });
+
+        return cachex;
+    }
 }
