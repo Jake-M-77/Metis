@@ -28,7 +28,10 @@ describe("PeoplePageCard", () => {
 
         render(
             <MemoryRouter>
-                <PeoplePageCard association={mockAssociation} />
+                <PeoplePageCard 
+                association={mockAssociation}
+                imageURL = "undefined"
+                imageServiceFailed = {false} />
             </MemoryRouter>
         );
 
