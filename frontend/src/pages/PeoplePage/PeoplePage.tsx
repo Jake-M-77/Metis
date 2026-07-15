@@ -7,7 +7,6 @@ import { getBatchCustodyImages } from "../../services/batchCustodyImageService";
 
 
 import metisLoadingImage from "../../assets/METISLoadingImage.png"
-import { custodyImageCache } from "../../cache/imageCache";
 import { addMissingDataToCache, addNegativeCache, getCachedImages, checkCustodyImageCache } from "../../services/cache/custodyImageCacheService";
 
 
@@ -39,9 +38,6 @@ function PeoplePage() {
             }
 
             const idsMissingFromCache: Array<string> = await checkCustodyImageCache(personIds);
-
-            console.log("MISSING IDS:", idsMissingFromCache);
-            console.log("CACHE:", custodyImageCache);
 
 
             if (personIds.length > 0 && idsMissingFromCache.length > 0) {
