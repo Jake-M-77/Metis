@@ -3,6 +3,11 @@ import PeoplePageCard from "./Components/PeoplePageCard";
 import { getPersonAssociations } from "../../services/personAssociationService";
 import { useParams } from "react-router-dom";
 import { PersonAssociation } from "../../types/personAssociation";
+import { getBatchCustodyImages } from "../../services/batchCustodyImageService";
+
+
+import metisLoadingImage from "../../assets/METISLoadingImage.png"
+import { addMissingDataToCache, addNegativeCache, getCachedImages, checkCustodyImageCache } from "../../services/cache/custodyImageCacheService";
 
 
 
@@ -12,24 +17,56 @@ function PeoplePage() {
 
     const [associations, setAssociations] = useState<PersonAssociation[]>([]);
     const [loading, setLoading] = useState(true);
+    const [batchCustodyImages, setBatchCustodyImages] = useState<Record<string, string>>();
+    const [imageServiceFailed, setImageServiceFailed] = useState(false);
 
 
     useEffect(() => {
-        async function load(id:string) {
-            const data = await getPersonAssociations(id);
-            console.log(id);
-            console.log("API RESPONSE:", data);
-            setAssociations(data);
-            setLoading(false);            
-        }
+        async function load(id: string) {
 
+            const personIds: string[] = [];
+
+            try {
+                const data = await getPersonAssociations(id);
+                setAssociations(data);
+
+                data.forEach(element => {
+                    personIds.push(element.person.id);
+                });
+            } catch (error) {
+                console.log("Failed to load person associations:", error);
+            }
+
+            const idsMissingFromCache: Array<string> = await checkCustodyImageCache(personIds);
+
+
+            if (personIds.length > 0 && idsMissingFromCache.length > 0) {
+                try {
+
+                    const batchImages = await getBatchCustodyImages(idsMissingFromCache);
+
+                    addMissingDataToCache(batchImages);
+
+                    addNegativeCache(idsMissingFromCache);
+
+                    console.warn(batchImages);
+
+                    console.log("API USED")
+
+                } catch (error) {
+                    setImageServiceFailed(true);
+                    console.error("Failed to load custody images:", error);
+                }
+            }
+            
+            setBatchCustodyImages(getCachedImages());
+
+            setLoading(false);
+        }
 
         load(`${userId.id}`);
 
-
-
     }, []);
-
 
     return (<>
 
@@ -39,8 +76,10 @@ function PeoplePage() {
 
             {associations.map((assoc) => (
                 <PeoplePageCard
-                key={assoc.person.id}
-                association={assoc}
+                    key={assoc.person.id}
+                    association={assoc}
+                    imageURL={batchCustodyImages ? batchCustodyImages?.[`${assoc.person.id}`] : metisLoadingImage}
+                    imageServiceFailed={imageServiceFailed}
                 />
             ))}
 

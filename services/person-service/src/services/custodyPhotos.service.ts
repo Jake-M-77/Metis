@@ -45,3 +45,36 @@ export const deleteCustodyPhotosService = async (id: string) => {
         where: { id },
     });
 };
+
+
+export const batchCustodyPhotosService = async (id: Array<string>) => {
+
+    const batch =  await prisma.custodyPhoto.findMany({
+        where: {
+            personId: {
+                in: id,
+            }
+        },
+        orderBy: {
+            createdAt: "desc",
+        },
+        select: {
+            personId: true,
+            imageUrl: true,
+            createdAt: true,
+
+        }
+    });
+
+
+    const personIdAndCustodyURLS = new Map<string, string>();
+
+    batch.forEach(element => {
+        if (!personIdAndCustodyURLS.has(element.personId)) {
+            personIdAndCustodyURLS.set(element.personId, element.imageUrl);
+        }
+    });
+
+    return Object.fromEntries(personIdAndCustodyURLS);
+
+}

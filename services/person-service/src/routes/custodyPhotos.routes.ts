@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { getAllCustodyPhotos, getCustodyPhotosById, createCustodyPhotos, updateCustodyPhotos, deleteCustodyPhotos } from "../controllers/custodyPhotos.controller.js"
+import { getAllCustodyPhotos, getCustodyPhotosById, createCustodyPhotos, updateCustodyPhotos, deleteCustodyPhotos, batchCustodyPhotos } from "../controllers/custodyPhotos.controller.js"
 
 
 console.log("CUSTODY PHOTOS ROUTES LOADED")
@@ -17,6 +17,8 @@ router.put("/custody-photos/:id", updateCustodyPhotos)
 
 router.delete("/custody-photos/:id", deleteCustodyPhotos)
 
+
+router.post("/custody-photos/batch", batchCustodyPhotos)
 
 
 
