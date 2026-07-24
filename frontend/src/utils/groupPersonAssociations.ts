@@ -1,25 +1,22 @@
 import { PersonAssociation } from "../types/personAssociation";
 
 
-export function groupPersonAssociations (passedData: Array<PersonAssociation>){
+export function groupPersonAssociations(passedData: Array<PersonAssociation>) {
 
-    const data: Record<string, PersonAssociation[]> = {};
+    const groupedData: Record<string, PersonAssociation[]> = {};
 
-    console.log()
     passedData.forEach(x => {
-        if (!Object.hasOwn(data, x.relationshipCategory)) {
-            const z = x.relationshipCategory;
-            data[x.relationshipCategory] = [x];
-            // data[x.relationshipCategory] = [x];
+        if (!Object.hasOwn(groupedData, x.relationshipCategory)) {
+            groupedData[x.relationshipCategory] = [x];
         }
-        else
-        {
-            console.log("xqqq");
-            data[x.relationshipCategory] = [...data[x.relationshipCategory], x]
+        else {
+            groupedData[x.relationshipCategory] = [...groupedData[x.relationshipCategory], x]
         }
-        
+
     });
 
-    console.log(data);
+    console.log(groupedData);
+
+    return groupedData;
 
 }
