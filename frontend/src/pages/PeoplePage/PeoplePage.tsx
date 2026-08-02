@@ -81,7 +81,8 @@ function PeoplePage() {
 
         <h1 className="flex justify-center text-text-primary text-3xl pb-8">People Page</h1>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
+        <div className="grid grid-cols-1 gap-5">
+
 
             {/* {associations.map((assoc) => (
                 <PeoplePageCard
