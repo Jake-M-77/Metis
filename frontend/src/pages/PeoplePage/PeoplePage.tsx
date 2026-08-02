@@ -8,6 +8,8 @@ import { getBatchCustodyImages } from "../../services/batchCustodyImageService";
 
 import metisLoadingImage from "../../assets/METISLoadingImage.png"
 import { addMissingDataToCache, addNegativeCache, getCachedImages, checkCustodyImageCache } from "../../services/cache/custodyImageCacheService";
+import { groupPersonAssociations } from "../../utils/groupPersonAssociations";
+import RelationshipCategory from "./Components/RelationshipCategory";
 
 
 
@@ -15,7 +17,9 @@ function PeoplePage() {
 
     const userId = useParams();
 
-    const [associations, setAssociations] = useState<PersonAssociation[]>([]);
+    // const [associations, setAssociations] = useState<PersonAssociation[]>([]);
+    const [groupedAssociations, setGroupedAssociations] = useState<Record<string, PersonAssociation[]>>({});
+
     const [loading, setLoading] = useState(true);
     const [batchCustodyImages, setBatchCustodyImages] = useState<Record<string, string>>();
     const [imageServiceFailed, setImageServiceFailed] = useState(false);
@@ -28,7 +32,12 @@ function PeoplePage() {
 
             try {
                 const data = await getPersonAssociations(id);
-                setAssociations(data);
+                // setAssociations(data);
+                // groupPersonAssociations(data);
+
+                setGroupedAssociations(groupPersonAssociations(data));
+                console.log(data);
+
 
                 data.forEach(element => {
                     personIds.push(element.person.id);
@@ -74,14 +83,40 @@ function PeoplePage() {
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
 
-            {associations.map((assoc) => (
+            {/* {associations.map((assoc) => (
                 <PeoplePageCard
                     key={assoc.person.id}
                     association={assoc}
                     imageURL={batchCustodyImages ? batchCustodyImages?.[`${assoc.person.id}`] : metisLoadingImage}
                     imageServiceFailed={imageServiceFailed}
                 />
+            ))} */}
+
+            {/* {groupedAssociations.key.map((assoc) => (
+                <RelationshipCategory
+                key={assoc.relationshipCategory}
+                categoryAssociations={assoc}
+                imageURL={batchCustodyImages ? batchCustodyImages?.[`${assoc.person.id}`] : metisLoadingImage}
+                imageServiceFailed={imageServiceFailed}
+                category={assoc.relationshipCategory}
+                />
+            ))} */}
+
+            {Object.entries(groupedAssociations).map((categories) => (
+                <RelationshipCategory 
+                key={categories[0]}
+                categoryAssociations={categories[1]}
+                batchCustodyImages={batchCustodyImages}
+                imageServiceFailed={imageServiceFailed}
+                category={categories[0]}
+                
+                
+                
+                />
             ))}
+
+
+
 
         </div>
 
