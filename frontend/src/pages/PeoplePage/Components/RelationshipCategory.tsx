@@ -14,13 +14,13 @@ function RelationshipCategory({ categoryAssociations, batchCustodyImages, imageS
 
     return (<>
 
-        <div className="border-2 border-sky">
+        <div className="border border-border-subtle p-1">
 
 
-        <div className="flex justify-between">
-            <h1></h1>
-            <h1 className=" text-text-primary m-2 text-lg">{category}</h1>
-            <button onClick={toggleCategoryDisplay} className="m-2 p-1 text-3xl">{isVisible ? "⬆️" : "⬇️"}</button>
+            <div className="flex justify-between">
+                <h1></h1>
+                <h1 className="text-text-primary m-2 text-lg border-b">{category}</h1>
+                <button onClick={toggleCategoryDisplay} className="m-2 p-1 text-3xl">{isVisible ? "⬆️" : "⬇️"}</button>
             </div>
             {isVisible &&
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
