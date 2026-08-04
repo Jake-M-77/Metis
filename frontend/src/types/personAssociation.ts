@@ -13,4 +13,5 @@ export type PersonAssociation = {
     }
     relationType: string;
     direction: string;
+    relationshipCategory: string;
 }

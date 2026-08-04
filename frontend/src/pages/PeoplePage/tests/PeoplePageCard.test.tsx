@@ -23,7 +23,8 @@ describe("PeoplePageCard", () => {
                 sex: "Male",
             },
             relationType: "UNKNOWN",
-            direction: "INCOMING"
+            direction: "INCOMING",
+            relationshipCategory: "UNKNOWN"
         };
 
         render(
