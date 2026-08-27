@@ -1,0 +1,26 @@
+flowchart LR
+    PAGE["Investigation Page"]
+
+    PAGE --> PERSISTENT["Persistent Area"]
+    PAGE --> WORKSPACE["Primary Workspace"]
+
+    PERSISTENT --> CONTEXT["Investigation Context"]
+    PERSISTENT --> RELATED["Related Entities"]
+
+    RELATED --> PEOPLE["People"]
+    RELATED --> VEHICLES["Vehicles"]
+    RELATED --> ORGS["Organisations"]
+    RELATED --> DOCS["Documents"]
+
+    WORKSPACE --> INV["Investigation Workspace"]
+    WORKSPACE --> PEOPLE_WS["People Workspace"]
+    WORKSPACE --> VEHICLES_WS["Vehicles Workspace"]
+    WORKSPACE --> ORGS_WS["Organisations Workspace"]
+    WORKSPACE --> DOCS_WS["Documents Workspace"]
+
+    INV --> FIXED["Fixed Investigation Information"]
+    INV --> DYNAMIC["Dynamic Investigation Content"]
+
+    DYNAMIC --> SUMMARY["Summary"]
+    DYNAMIC --> CLASSIFICATION["Classification"]
+    DYNAMIC --> MO["MO"]
