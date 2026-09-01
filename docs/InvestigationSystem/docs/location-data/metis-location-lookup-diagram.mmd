@@ -1,0 +1,22 @@
+flowchart TD
+    A[User enters postcode] --> B[(PostgreSQL LOCATION)]
+
+    B --> C{Location exists?}
+
+    C -->|Yes| D[Return existing locations]
+
+    C -->|No| E[External Address Source]
+
+    E --> F[Address Results]
+
+    F --> G[(postcode-geography.db)]
+
+    G --> H[Retrieve Geographic Data]
+
+    H --> I[Combine Address + Geographic Data]
+
+    I --> J[(PostgreSQL LOCATION)]
+
+    J --> D
+
+    D --> K[Display Locations]

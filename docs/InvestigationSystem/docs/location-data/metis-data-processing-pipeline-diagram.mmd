@@ -1,0 +1,19 @@
+flowchart TD
+    A[ONS Source CSVs] --> B[Python Data Processor]
+    B --> C[(ons-source-data.db)]
+
+    C --> B
+
+    B --> D[Code Matching]
+    D --> E[Validation]
+
+    E --> F[(postcode-geography.db)]
+    F --> G[postcode_geography]
+
+    G --> H[METIS Application]
+
+    I[External Address Source] --> H
+
+    H --> J[(PostgreSQL LOCATION Table)]
+
+    J --> K[Investigation]
