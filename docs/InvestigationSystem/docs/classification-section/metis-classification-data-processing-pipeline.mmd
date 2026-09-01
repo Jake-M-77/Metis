@@ -1,0 +1,13 @@
+flowchart TD
+    A[Government Offence Classification CSV] --> B[Python Processor]
+
+    B --> C[Read CSV Data]
+    C --> D[Validate Data]
+    D --> E[Transform / Prepare Records]
+    E --> F[Insert Records into SQLite]
+
+    F --> G[(classification-reference.db)]
+
+    G --> H[Offence Classifications]
+
+    H --> I[METIS Classification Search]
