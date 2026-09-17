@@ -4,7 +4,7 @@
 
 The investigation system requires a classification mechanism to identify an categorise the offences associated with an investigation. 
 
-The classification section will be a component within the Investigation workspace. It will allow investigators t oassign a primary classification and one or more secondary classifications to an investigation, alongside additional METIS-defined classification information such as Type, Categories and Keywords. 
+The classification section will be a component within the Investigation workspace. It will allow investigators to assign a primary classification and one or more secondary classifications to an investigation, alongside additional METIS-defined classification information such as Type, Categories and Keywords. 
 
 The classification system will use government-provided offence classification data as reference data, while METIS-specific classification information will be managed seperately. 
 
@@ -46,6 +46,7 @@ These fields will be retained within the classification refewrence data and will
 
 The classification data can be conceputally represented as: 
 
+```text
 Offence Type
       │
       ▼
@@ -57,12 +58,13 @@ Offence
       ├── Offence Code
       │
       └── Detailed Offence
+```
 
 The exact structure of the source dataset may change when updated government datasets are released.
 
 ---
 
-## 4. Classification Selection
+## 4. Classification Selection
 
 Classifications will be selected through a modal window opened from the Classification section. 
 
@@ -80,6 +82,7 @@ As the investigator provides search information, the results list will be dynami
 
 Conceptually: 
 
+```text
 Classification Section
       │
       ▼
@@ -99,6 +102,7 @@ Select Classification
       │
       ▼
 Add to Investigation
+```
 
 The same selection mechanism will be used when assigning the primary or a secondary classification.
 
@@ -114,7 +118,7 @@ The primary classification may also be used by METIS when determing whether auto
 
 ----
 
-## 6. Secondary classifications
+## 6. Secondary classifications
 
 An investigation amy contain multiple secondary classifications
 
@@ -126,6 +130,7 @@ Secondary classifications may also be used by METIS when determining whether aut
 
 Conceptually:
 
+```text
 Investigation
       │
       ├── Primary Classification
@@ -134,10 +139,11 @@ Investigation
             ├── Classification
             ├── Classification
             └── ...
+```
 
 ----
 
-## 7. METIS Classification Type
+## 7. METIS Classification Type
 
 The classification section will contain a Type value which is controlled by METIS rather than the government offecne classification dataset. 
 
@@ -159,7 +165,7 @@ The exact categories will be defined separately.
 
 ---
 
-## 9. Keywords
+## 9. Keywords
 
 The classification section will support METIS-defined keywords
 
@@ -180,7 +186,7 @@ Keywords are separate form the government offence classification dataset.
 
 ---
 
-## 10. Automatic Tasks
+## 10. Automatic Tasks
 
 Classification may be used by METIS to determine whether an investigation requires specific tasks.
 
@@ -188,6 +194,7 @@ Both the priamry classification and second classifications may contribute to the
 
 For exammple:
 
+```text
 Investigation
       │
       ▼
@@ -201,6 +208,7 @@ Task created automatically
       │
       ▼
 Assigned to appropriate investigator
+```
 
 The exact rules determine which classification generate which tasks will be defined separately when the task automation functionality is implemented. 
 
@@ -216,6 +224,7 @@ The source dataset will be downloaded and processed before being made available 
 
 The processing workflow will be:
 
+```text
 Government Classification CSV
       │
       ▼
@@ -229,6 +238,7 @@ Classification Reference Data
       │
       ▼
     METIS
+```
 
 A Python script will be responsible for processing the source CSV and creating the SQLite reference database. 
 
@@ -236,7 +246,7 @@ The SQLite database will contain the government classification data required by 
 
 ---
 
-## 12. Classification Reference Database
+## 12. Classification Reference Database
 
 The classification reference database will use SQLite.
 
@@ -246,6 +256,7 @@ The reference database will be read-only from the perspective of the METIS appli
 
 Conceptually: 
 
+```text
 METIS Docker Environment
       │
       ├── PostgreSQL
@@ -253,6 +264,7 @@ METIS Docker Environment
       │
       └── SQLite
             └── Classification reference data
+```
 
 SQLite is appropriate for this dataset because the government classification data is relatively small, static reference data and does not require a dedicated relational database server. 
 
@@ -276,6 +288,7 @@ The selected classification will then be associated with the invesitigation with
 
 METIS does not need to copy the entire govermnemt classification dataset into PostgreSQL. 
 
+```text
 Investigator
       │
       ▼
@@ -298,6 +311,7 @@ METIS PostgreSQL
       │
       ▼
 Investigation Classification
+```
 
 ---
 

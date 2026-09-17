@@ -51,6 +51,7 @@ The selected type determines which Person Overview Component is loaded.
 
 Conceptually:
 
+```text
 Investigation
       │
       ▼
@@ -73,6 +74,7 @@ Person Navigation
       │
       ▼
 Dynamic Working Area
+```
 
 ## Person selection
 
@@ -80,6 +82,7 @@ When an investigator selects a person already displayed within the Investigation
 
 The Person Overview will therefore always provide the following structure:
 
+```text
 Person Overview
       │
       ├── Person Navigation
@@ -87,6 +90,8 @@ Person Overview
       └── Dynamic Working Area
             │
             └── Component determined by selected navigation section
+
+```
 
 ## Person-type-specific functionality
 
