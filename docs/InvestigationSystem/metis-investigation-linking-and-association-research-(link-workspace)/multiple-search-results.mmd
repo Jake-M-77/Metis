@@ -1,0 +1,27 @@
+flowchart TD
+    A[Research Information]
+    B[Search METIS]
+    C[Multiple Potential Results]
+
+    A --> B
+    B --> C
+
+    C --> D[Result A]
+    C --> E[Result B]
+    C --> F[Result C]
+
+    D --> G[View]
+    E --> H[View]
+    F --> I[View]
+
+    G --> J{Correct?}
+    H --> K{Correct?}
+    I --> L{Correct?}
+
+    J -->|No| M[Return to Results]
+    K -->|No| M
+    L -->|No| M
+
+    J -->|Yes| N[Link]
+    K -->|Yes| N
+    L -->|Yes| N

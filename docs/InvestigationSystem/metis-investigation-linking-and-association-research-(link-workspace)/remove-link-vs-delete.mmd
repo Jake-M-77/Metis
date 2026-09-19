@@ -1,0 +1,9 @@
+flowchart TD
+    A[Linked METIS Record]
+
+    A --> B{Action}
+
+    B -->|Remove Link| C[Remove Investigation ↔ METIS Association]
+    C --> D[Underlying METIS Record Remains]
+
+    B -->|Delete| E[Delete Underlying Record]

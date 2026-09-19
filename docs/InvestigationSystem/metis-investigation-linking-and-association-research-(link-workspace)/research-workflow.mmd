@@ -1,0 +1,25 @@
+flowchart TD
+    A[Select Linkable Information]
+    B[Research]
+    C[Search METIS]
+    D[Search Results]
+    E[Select Potential Record]
+    F[View Record]
+    G{Correct Record?}
+    H[Link]
+    I[Back to Search Results]
+    J[Create New METIS Record]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+
+    G -->|Yes| H
+    G -->|No| I
+    I --> D
+
+    D --> J
+    J --> H

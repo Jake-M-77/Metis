@@ -1,0 +1,13 @@
+flowchart LR
+    A[Investigation-Owned Information]
+
+    A --> B{Research METIS}
+
+    B -->|Existing record found| C[Existing METIS Record]
+    B -->|No suitable record| D[Create New METIS Record]
+
+    C --> E[Explicit Link]
+    D --> F[New METIS Record]
+    F --> E
+
+    E --> G[Investigation ↔ METIS Association]

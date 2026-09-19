@@ -1,0 +1,29 @@
+flowchart TD
+    A[Investigation Information]
+    B[Research]
+    C{Existing METIS Record?}
+
+    A --> B
+    B --> C
+
+    C -->|Yes| D[Existing METIS Record]
+    C -->|No| E[Create New METIS Record]
+
+    D --> F[Link]
+    E --> G[Link]
+
+    F --> H[Linked]
+    G --> I[Linked]
+
+    H --> J[Remove Link]
+    I --> K[Remove Link / Delete]
+
+    J --> L[Association Removed]
+    L --> D
+
+    K --> M{Delete?}
+
+    M -->|Remove Link| N[Association Removed]
+    N --> E
+
+    M -->|Delete| O[Underlying METIS Record Deleted]

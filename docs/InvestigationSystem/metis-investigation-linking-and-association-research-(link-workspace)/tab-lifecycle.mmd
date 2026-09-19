@@ -1,0 +1,22 @@
+stateDiagram-v2
+    [*] --> TabCreated
+
+    TabCreated --> Researching
+    TabCreated --> Viewing
+    TabCreated --> Editing
+
+    Researching --> Linked : Link completed
+    Linked --> Closed : Automatic close
+
+    Researching --> CloseRequested : X pressed
+    Viewing --> CloseRequested : X pressed
+    Editing --> CloseRequested : X pressed
+
+    CloseRequested --> Warning : Outstanding action
+    Warning --> Closed : Confirm
+    Warning --> Researching : Cancel
+    Warning --> Viewing : Cancel
+    Warning --> Editing : Cancel
+
+    Viewing --> Closed : No outstanding action
+    Editing --> Closed : No outstanding action

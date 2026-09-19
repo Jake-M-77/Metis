@@ -1,0 +1,12 @@
+flowchart LR
+    A[Research]
+    B[View Record]
+    C[Link]
+
+    A --> B
+    B --> C
+
+    A -. does not create .-> D[Association]
+    B -. does not create .-> D
+
+    C --> D[Investigation ↔ METIS Association]

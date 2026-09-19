@@ -1,0 +1,13 @@
+flowchart TD
+    A[Close Links Workspace]
+    B{Outstanding Research / Link Actions?}
+
+    A --> B
+
+    B -->|No| C[Close Workspace]
+    B -->|Yes| D[Display Warning]
+
+    D --> E{Continue Closing?}
+
+    E -->|Yes| C
+    E -->|No| F[Return to Links Workspace]

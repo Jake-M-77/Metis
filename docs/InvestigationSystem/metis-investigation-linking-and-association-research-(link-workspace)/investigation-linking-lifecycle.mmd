@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> Unlinked
+
+    Unlinked --> Research
+    Research --> SearchResults
+    SearchResults --> SelectRecord
+    SelectRecord --> ViewRecord
+    ViewRecord --> Linked : Link
+
+    Linked --> Unlinked : Remove Link
